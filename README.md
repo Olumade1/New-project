@@ -1,49 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pet Rescue Adoption Day</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js" defer></script>
-  </head>
+const statusButton = document.querySelector("button");
+const pets = document.querySelector(".all-pets");
 
-  <body>
-    <div class="container">
-      <img class="ruby" src="img/ruby-cat.png" />
-      <h1>
-Sharon's Pet Rescue
-      </h1>
-      <div class="available">
-        <h2>Pet Meet & Greet!</h2>
-        <ul class="all-pets"></ul>
-      </div>
-      <button>Show Pet Status</button>
-    </div>
-  </body>
-</html>
-
-java script
-{
-  "name": "js-lesson11-challenge-01-solution",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
-  "dependencies": {},
-  "keywords": []
-}
+const createPet = function (name, species) {
+  const pet = {
+    name: name,
+    species: species,
+    isTired: 5, // Scale from 1 (refreshed) to 10 (exhausted)
+    sleep: function () {
+      console.log(`${this.name} needs nap. Zzz...`);
+      this.isTired = 1;
+    },
+    play: function () {
+      if (this.isTired === 10) {
+        console.log("Too tired to play.");
+        this.sleep();
+      } else {
+        console.log(`Yay! ${this.name} loves to play!`);
+        this.isTired += 1;
+      }
+    }
+  };
 
 
+  return pet;
+};
+
+const sora = createPet("Sora", "ferret");
+const clover = createPet("Clover", "rabbit");
+const baxter = createPet("Baxter", "hamster");
+const cleo = createPet("Cleo", "rat");
+const francine = createPet("Francine", "turtle");
+
+console.log(sora, clover, baxter, cleo, francine);
+
+clover.sleep();
+baxter.play();
+
+console.log(clover, baxter);
